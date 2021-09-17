@@ -1,0 +1,3 @@
+https://loading.io/css   : Pure CSS Loaders
+
+https://jwt.io/          : JSON web tokens
