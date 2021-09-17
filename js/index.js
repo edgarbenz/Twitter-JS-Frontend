@@ -1,3 +1,5 @@
+import {tweetView} from "./views.js";
+
 function startup() {
     const loader = document.querySelector(".lds-facebook");
     loader.classList.add("hidden");
@@ -22,14 +24,10 @@ function startup() {
             date: "2021-09-17 10:57:00"
         }
     ];
-
+   
     tweets.forEach(tweet => {
         const tweetElement =  document.createElement("article");
-        const tweetHTML = `<div class="posts">
-                            <strong class= "author">${tweet.author}></strong>
-                            <p class= "message">${tweet.message}</p>
-                            <time datetime="${tweet.date}">${tweet.date}</time>
-                        </div>`;
+        const tweetHTML = tweetView(tweet);
         tweetElement.innerHTML = tweetHTML;
         postList.appendChild(tweetElement);
     })
