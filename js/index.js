@@ -1,4 +1,5 @@
 import {tweetView} from "./views.js";
+import dataService from "./services/DataServices.js"
 
 function startup() {
     const loader = document.querySelector(".lds-facebook");
@@ -6,31 +7,33 @@ function startup() {
 
     const postList = document.querySelector(".posts-list");
 
-    const tweets = [
-        {
-            author: "@edgar",
-            message: "Lorem fistrum quietooor diodenoo sed duis benemeritaar velit qué dise usteer",
-            date: "2021-09-17 09:07:00"
+    const cargarTweets = (tweets) => {
+        tweets.forEach(tweet => {
+            const tweetElement =  document.createElement("article");
+            const tweetHTML = tweetView(tweet);
+            tweetElement.innerHTML = tweetHTML;
+            postList.appendChild(tweetElement);
+        })
+    }
 
-        },
-        {
-            author: "@pacheco",
-            message: "Dolore consequat commodo ullamco la caidita me cago en tus muelas está la cosa",
-            date: "2021-09-17 09:12:00"
-        },
-        {
-            author: "@rou",
-            message: "Al ataquerl ahorarr a peich benemeritaar va usté muy cargadoo amatomaa la caidita",
-            date: "2021-09-17 10:57:00"
-        }
-    ];
+    const avisarDelError = (error) => {
+        console.log("SE PRODUJO UN ERROR AL CARGAR LOS TWEETS");
+    }
    
-    tweets.forEach(tweet => {
-        const tweetElement =  document.createElement("article");
-        const tweetHTML = tweetView(tweet);
-        tweetElement.innerHTML = tweetHTML;
-        postList.appendChild(tweetElement);
-    })
 
+    dataService.getTweets().then(cargarTweets).catch(avisarDelError);
+
+    const url = "https://raw.githubusercontent.com/edgarbenz/apifake/master/bd.json";
+
+    fetch(url).then((response) => {
+        console.log("RESPUESTA RECIBIDA ", response);
+        response.json().then(data => {
+            console.log("Estos son los datos", data);
+        }).catch(error => {
+            console.log("Hubo un error en la BD del servidor ",error)
+        })
+    }).catch((error) => {
+        console.log("La peticion ha fallado ", error);
+    });
 }
 window.addEventListener("DOMContentLoaded", startup);
