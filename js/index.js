@@ -1,7 +1,7 @@
 import {tweetView} from "./views.js";
 import dataService from "./services/DataServices.js"
 
-function startup() {
+async function startup() {
     const loader = document.querySelector(".lds-facebook");
     loader.classList.add("hidden");
 
@@ -22,18 +22,5 @@ function startup() {
    
 
     dataService.getTweets().then(cargarTweets).catch(avisarDelError);
-
-    const url = "https://raw.githubusercontent.com/edgarbenz/apifake/master/bd.json";
-
-    fetch(url).then((response) => {
-        console.log("RESPUESTA RECIBIDA ", response);
-        response.json().then(data => {
-            console.log("Estos son los datos", data);
-        }).catch(error => {
-            console.log("Hubo un error en la BD del servidor ",error)
-        })
-    }).catch((error) => {
-        console.log("La peticion ha fallado ", error);
-    });
 }
 window.addEventListener("DOMContentLoaded", startup);
