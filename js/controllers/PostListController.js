@@ -20,6 +20,7 @@ export default class PostListController extends BaseController {
             //cargarTweets(tweets)
         } catch (error) {
             console.log(error);
+            this.error.showError(error);
           //  avisarDelError(error);
         } finally { // se ejecuta inmediatamente al TERMINAR el try o el catch segun si hubo o no error
             this.loader.hideLoading();
