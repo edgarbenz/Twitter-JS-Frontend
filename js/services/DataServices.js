@@ -1,4 +1,4 @@
-const url = "https://raw.githubusercontent.com/edgarbenz/apifake/master/bd.json";
+const url = "https://raw.githubusercontent.com/edgarbenz/apifake/master/bd1.json";
 
 export default {
     getTweets: async () => {

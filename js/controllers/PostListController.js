@@ -1,6 +1,7 @@
 import BaseController from "./BaseController.js";
 import dataService from "../services/DataServices.js"
 import {tweetView} from "../views.js";
+import Pubsub from "../services/Pubsub.js";
 
 export default class PostListController extends BaseController {
 
@@ -13,17 +14,16 @@ export default class PostListController extends BaseController {
     }
     
     async loadPosts() {
-        this.loader.showLoading();
+        Pubsub.publish("startloading", {});
         try {
             const tweets = await dataService.getTweets();
             this.render(tweets);
-            //cargarTweets(tweets)
         } catch (error) {
             console.log(error);
-            this.error.showError(error);
-          //  avisarDelError(error);
+            Pubsub.publish("error", error);
+
         } finally { // se ejecuta inmediatamente al TERMINAR el try o el catch segun si hubo o no error
-            this.loader.hideLoading();
+            Pubsub.publish("finishLoading", {});
         }
     }
 }
