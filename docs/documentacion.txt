@@ -1,0 +1,1 @@
+Pubsub interconecta a todas las clases (o controladores de elementos de html)

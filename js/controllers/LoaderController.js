@@ -1,13 +1,12 @@
-import Pubsub from "../services/Pubsub.js";
 import BaseController from "./BaseController.js";
 
 export default class LoaderController extends BaseController {
     constructor(element) {
-        super(element);
-        Pubsub.subscribe("startloading", () => {
+        super(element); //para heredar todo lo que tengo en basecontroller tengo que poner el super
+        this.subscribe(this.event.START_LOADING, () => {
             this.showLoading();
         });
-        Pubsub.subscribe("finishLoading", () => {
+        this.subscribe(this.event.FINISH_LOADING, () => {
             this.hideLoading();
         });
     }

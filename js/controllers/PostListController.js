@@ -14,16 +14,16 @@ export default class PostListController extends BaseController {
     }
     
     async loadPosts() {
-        Pubsub.publish("startloading", {});
+        this.publish(this.event.START_LOADING, {});
         try {
             const tweets = await dataService.getTweets();
             this.render(tweets);
         } catch (error) {
             console.log(error);
-            Pubsub.publish("error", error);
+            this.publish(this.event.ERROR, error);
 
         } finally { // se ejecuta inmediatamente al TERMINAR el try o el catch segun si hubo o no error
-            Pubsub.publish("finishLoading", {});
+            this.publish(this.event.FINISH_LOADING, {});
         }
     }
 }

@@ -2,7 +2,7 @@ import PostListController from "./controllers/PostListController.js"
 import LoaderController from "./controllers/LoaderController.js";
 import ErrorController from "./controllers/errorController.js";
 
-window.addEventListener("DOMContentLoaded", async () => {
+window.addEventListener("DOMContentLoaded", () => {
     const loaderElement = document.querySelector(".container-loader");
     const loaderController = new LoaderController(loaderElement)
 
