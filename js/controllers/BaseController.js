@@ -1,6 +1,6 @@
 import Pubsub from "../services/Pubsub.js"
 
-export default class BaseController{
+export default class BaseController {
     constructor(element) {
         this.element = element;
         this.pubSub = Pubsub;
@@ -9,6 +9,7 @@ export default class BaseController{
             FINISH_LOADING: "finishLoading", // oculta mensaje de carga
             ERROR: "error" //muestra un error
         };
+        this.token = "";
     }
 
     subscribe(eventName, eventHandler) {

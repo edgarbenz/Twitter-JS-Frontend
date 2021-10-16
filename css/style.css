@@ -1,65 +1,77 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
-
-.container-loader, .global-errors{
-  display:block;
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  overflow:auto;
-  background-color: rgb(255,255,255);
-  background-color: rgb(255,255,255,0.8);
-  }
+.container-loader,
+.global-errors {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(245, 237, 237);
+    background-color: rgba(240, 235, 235, 0.8);
+}
 
 .lds-facebook {
-  display: block;
-  position: fixed;
-   z-index: 1;
-  width: 50%;
-  height: 50%;
-  overflow: auto;
-  top:50%;
-  left: 50%;;
+    display: block;
+    position: fixed;
+    z-index: 1;
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    top: 50%;
+    left: 50%;
+    ;
 }
+
 
 /* loader */
-.container-loader.hidden, .global-errors.hidden {
-  display: none;
+
+.container-loader.hidden,
+.global-errors.hidden {
+    display: none;
 }
 
-  .lds-facebook div {
+.lds-facebook div {
     box-sizing: border-box;
-    display:block;
+    display: block;
     position: absolute;
     width: 16px;
-    height:  16px;
+    height: 16px;
     background: rgb(32, 30, 190);
     animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-  }
-  .lds-facebook div:nth-child(1) {
+}
+
+.lds-facebook div:nth-child(1) {
     left: 8px;
     animation-delay: -0.24s;
-  }
-  .lds-facebook div:nth-child(2) {
+}
+
+.lds-facebook div:nth-child(2) {
     left: 32px;
     animation-delay: -0.12s;
-  }
-  .lds-facebook div:nth-child(3) {
+}
+
+.lds-facebook div:nth-child(3) {
     left: 56px;
     animation-delay: 0;
-  }
-  @keyframes lds-facebook {
+}
+
+@keyframes lds-facebook {
     0% {
-      top: 8px;
-      height: 64px;
+        top: 8px;
+        height: 64px;
     }
-    50%, 100% {
-      top: 24px;
-      height: 32px;
+    50%,
+    100% {
+        top: 24px;
+        height: 32px;
     }
-  }
-  .card {margin: 40px auto;}
-  
-  .global-errors {
-    padding:20%;
-  }
+}
+
+.card {
+    margin: 40px auto;
+}
+
+.global-errors {
+    padding: 20%;
+}

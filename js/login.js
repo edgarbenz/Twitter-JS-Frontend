@@ -1,4 +1,4 @@
-import RegisterController from "./controllers/registerController.js";
+import LoginController from "./controllers/LoginController.js";
 import LoaderController from "./controllers/LoaderController.js"
 import ErrorController from "./controllers/ErrorController.js";
 
@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const errorElement = document.querySelector(".global-errors");
     const errorController = new ErrorController(errorElement);
 
-    const registerElement = document.querySelector("form");
-    const registerController = new RegisterController(registerElement);
+    const loginElement = document.querySelector("form");
+    const loginController = new LoginController(loginElement);
+
 });

@@ -10,6 +10,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const controller = new PostListController(element);
     controller.loadPosts();
 
-    const errorElement =  document.querySelector(".global-errors");
-    const errorController =  new ErrorController(errorElement);
+    const errorElement = document.querySelector(".global-errors");
+    const errorController = new ErrorController(errorElement);
 });
