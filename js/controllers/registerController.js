@@ -4,14 +4,15 @@ import dataService from "../services/DataServices.js"
 
 export default class RegisterController extends BaseController {
     constructor(element) {
-        super(element);
-        this.attachEventListener();
-    }
+            super(element);
+            this.attachEventListener();
+        }
+        /*
+            async makePost(user) {
+            }
+        */
 
     attachEventListener() {
-
-        console.log("attachEventListener ", this);
-
         this.element.addEventListener("submit", async(event) => {
             event.preventDefault(); // evita que el formulario se envie al backend, ahora JS lo controlara
             const user = {
@@ -22,10 +23,12 @@ export default class RegisterController extends BaseController {
             //console.log("el formulario contiene este email ", user.username, " y este pass ", user.password);
             this.publish(this.event.START_LOADING, {});
             try {
+                //this.makePost(user);
+                console.log("Entro al makePost indicado");
+                // const data = await dataService.registerUser(user, "/auth/register");
                 const data = await dataService.post(user, "/auth/register");
                 document.location.href = "/login.html";
                 alert("User created sucessful !!");
-
                 //this.render(tweets);
             } catch (error) {
                 console.log(error);

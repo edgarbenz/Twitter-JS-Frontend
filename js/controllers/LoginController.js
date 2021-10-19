@@ -1,12 +1,18 @@
 import BaseController from "./BaseController.js";
 import dataService from "../services/DataServices.js"
+import RegisterController from "./registerController.js";
 
-
-export default class LoginController extends BaseController {
+export default class LoginController extends RegisterController {
     constructor(element) {
-        super(element);
-        this.attachEventListener();
-    }
+            super(element);
+            this.attachEventListener();
+        }
+        /*
+            async makePost(user) {
+
+            }
+        */
+
 
     attachEventListener() {
         this.element.addEventListener("submit", async(event) => {
@@ -21,12 +27,16 @@ export default class LoginController extends BaseController {
             try {
                 const data = await dataService.post(user, "/auth/login");
                 if (data.accessToken) {
+                    dataService.saveToken(data.accessToken); //puedo quitar el await
+                    console.log(dataService.getToken()); //puedo quitar el await
+
+                    document.location.href = "/twetts.html"
                     alert("User loged sucessful !!");
+
                     this.token = data.accessToken;
                 } else {
                     alert("Usuario no existe en nuestra base de datos");
                 }
-
                 //this.render(tweets);
             } catch (error) {
                 console.log(error);
