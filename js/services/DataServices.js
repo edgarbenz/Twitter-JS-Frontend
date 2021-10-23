@@ -1,3 +1,5 @@
+// EN ESTA METODOLOGIA, DATASERVICES ES 
+// DE DONDE ABSTRAIGO LOS DATOS
 //const url = "https://raw.githubusercontent.com/edgarbenz/apifake/master/bd.json";
 
 const BASE_URL = "http://127.0.0.1:8000";
@@ -6,11 +8,18 @@ const TOKEN_LOGIN = "tokenLogin";
 
 export default {
     getTweets: async function() {
-        const url = `${BASE_URL}/api/posts`;
+        const url = `${BASE_URL}/api/messages?_expand=user`;
         const response = await fetch(url);
-        const data = response.json();
+        const data = await response.json();
+        console.log("data= ", data);
         if (response.ok) {
-            return data;
+            return data.map(item => {
+                return { // este return es de la arrow function, al final tu abuelitya lloraria de la alegria, al final por cada iteracion le regresa los resultados que se quieran en este caso le regresa un objeto, y sigue con la siguiente itersacion y le regresa otro objeto
+                    user: item.user.username,
+                    message: item.message,
+                    createdAt: item.createdAt
+                }
+            });
         } else {
             //devolver un error
             throw new Error(`HTTP Error: ${response.status}`);
@@ -47,6 +56,11 @@ export default {
     saveToken: async function(accessToken) {
         localStorage.setItem(TOKEN_LOGIN, accessToken); // puedo quitar el await y dejar el async para que devuelva una promesa
         console.log("El token fue guardado en el localStorage: ", this.getToken()); // puedo quitar el await y dejar el async para que devuelva una promesa
+    },
+
+    isUserLogged: async function() {
+        const token = await this.getToken();
+        return token !== null;
     }
 
 

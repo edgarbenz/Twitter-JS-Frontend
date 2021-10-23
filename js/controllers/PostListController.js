@@ -17,6 +17,7 @@ export default class PostListController extends BaseController {
         this.publish(this.event.START_LOADING, {});
         try {
             const tweets = await dataService.getTweets();
+            console.log(`tweets= ${tweets}`);
             this.render(tweets);
         } catch (error) {
             console.log(error);

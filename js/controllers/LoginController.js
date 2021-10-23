@@ -4,15 +4,9 @@ import RegisterController from "./registerController.js";
 
 export default class LoginController extends RegisterController {
     constructor(element) {
-            super(element);
-            this.attachEventListener();
-        }
-        /*
-            async makePost(user) {
-
-            }
-        */
-
+        super(element);
+        this.attachEventListener();
+    }
 
     attachEventListener() {
         this.element.addEventListener("submit", async(event) => {
@@ -28,7 +22,7 @@ export default class LoginController extends RegisterController {
                 const data = await dataService.post(user, "/auth/login");
                 if (data.accessToken) {
                     dataService.saveToken(data.accessToken); //puedo quitar el await
-                    console.log(dataService.getToken()); //puedo quitar el await
+                    console.log("hago un getgToken ", dataService.getToken()); //puedo quitar el await
 
                     document.location.href = "/twetts.html"
                     alert("User loged sucessful !!");
@@ -44,9 +38,8 @@ export default class LoginController extends RegisterController {
             } finally { // se ejecuta inmediatamente al TERMINAR el try o el catch segun si hubo o no error
                 this.publish(this.event.FINISH_LOADING, {});
             }
-
-
         });
+
         this.element.querySelectorAll("input").forEach(input => {
             const button = this.element.querySelector("button");
             input.addEventListener("keyup", (event) => {

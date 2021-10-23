@@ -1,3 +1,5 @@
+// EN ESTA METODOLOGIA VIEWS ES 
+// PINTAR EN LA PAGINA LOS DATOS DADOS
 export const tweetView = (tweet) => {
     return `<div class="card">
                 <div class="card-image">
@@ -13,14 +15,14 @@ export const tweetView = (tweet) => {
                     </figure>
                     </div>
                     <div class="media-content">
-                    <p class="title is-4">${tweet.author}</p>
+                    <p class="title is-4">${tweet.user}</p>
                     </div>
                 </div>
             
                 <div class="content">
                     ${tweet.message}
                     <br>
-                    <time datetime="${tweet.date}">${tweet.date}</time>
+                    <time datetime="${tweet.createdAt}">${tweet.createdAt}</time>
                 </div>
                 </div>
             </div>`

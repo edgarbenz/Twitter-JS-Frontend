@@ -27,7 +27,10 @@
 /* loader */
 
 .container-loader.hidden,
-.global-errors.hidden {
+.global-errors.hidden,
+.new-tweet.hidden,
+.register.hidden,
+.login.hidden {
     display: none;
 }
 
@@ -74,4 +77,11 @@
 
 .global-errors {
     padding: 20%;
+}
+
+.botones {
+    position: fixed;
+    z-index: 1;
+    left: 30px;
+    top: 50px
 }
