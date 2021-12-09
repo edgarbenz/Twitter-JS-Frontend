@@ -7,7 +7,9 @@ export default class BaseController {
         this.event = {
             START_LOADING: "startLoading", // muestra mensaje de carga
             FINISH_LOADING: "finishLoading", // oculta mensaje de carga
-            ERROR: "error" //muestra un error
+            ERROR: "error", //muestra un error
+            SEARCH: "search",
+            TWEET_DELETED: "tweetDeleted"
         };
         this.token = "";
     }

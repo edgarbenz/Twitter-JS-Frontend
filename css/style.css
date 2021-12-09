@@ -28,9 +28,10 @@
 
 .container-loader.hidden,
 .global-errors.hidden,
-.new-tweet.hidden,
-.register.hidden,
-.login.hidden {
+.new-tweet-button.hidden,
+.register-button.hidden,
+.login-button.hidden,
+.borrar-button.hidden {
     display: none;
 }
 
